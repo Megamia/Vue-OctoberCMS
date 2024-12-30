@@ -15,6 +15,7 @@
       mode="inline"
       :theme="theme"
       :items="items"
+      @select="handleChangePage"
     />
   </div>
 </template>
@@ -108,6 +109,24 @@ const items = ref([
   },
 ]);
 const changeTheme = () => {
+  //   console.log(theme.value, checked.value);
+  checked.value = !checked.value;
   theme.value = checked.value ? "dark" : "light";
+};
+const findLabelByKey = (items, key) => {
+  for (const item of items) {
+    if (item.key === key) return item.label;
+    if (item.children) {
+      const label = findLabelByKey(item.children, key);
+      if (label) return label;
+    }
+  }
+  return null;
+};
+
+const handleChangePage = (event) => {
+  const selectedKey = event.key;
+  const label = findLabelByKey(items.value, selectedKey);
+  console.log(label);
 };
 </script>
