@@ -1,0 +1,8 @@
+v1.0.1:
+    - 'Initialize plugin'
+v1.0.2:
+    - 'Created table dat_data_vehicles'
+    - builder_table_create_dat_data_vehicles.php
+v1.0.3:
+    - 'Updated table dat_data_vehicles'
+    - builder_table_update_dat_data_vehicles.php

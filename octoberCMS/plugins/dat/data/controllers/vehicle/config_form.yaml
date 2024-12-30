@@ -1,0 +1,10 @@
+name: Vehicle
+form: $/dat/data/models/vehicle/fields.yaml
+modelClass: Dat\Data\Models\Vehicle
+defaultRedirect: dat/data/vehicle
+create:
+    redirect: 'dat/data/vehicle/update/:id'
+    redirectClose: dat/data/vehicle
+update:
+    redirect: dat/data/vehicle
+    redirectClose: dat/data/vehicle
