@@ -101,22 +101,31 @@ const dataForm = ref({
   password: "",
 });
 const handleLogin = async () => {
-  const response = await axios.post(
-    "http://127.0.0.1:8000/api/login",
-    {
-      email: dataForm.value.email,
-      password: dataForm.value.password,
-    },
-    {
-      headers: {
-        "Content-Type": "application/json",
+  try {
+    const response = await axios.post(
+      "http://127.0.0.1:8000/api/login",
+      {
+        email: dataForm.value.email,
+        password: dataForm.value.password,
       },
-    }
-  );
-  console.log(response);
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    console.log("Login successful:", response);
+  } catch (error) {
+    console.error("Login failed: ", error.response);
+  }
 };
+
 const test = async () => {
-  const response = await axios.get("http://127.0.0.1:8000/api/Data");
-  console.log(response);
+  try {
+    const response = await axios.get("http://127.0.0.1:8000/api/data");
+    console.log("Data fetched:", response.data);
+  } catch (error) {
+    console.error("Failed to fetch data:", error.response.data);
+  }
 };
 </script>
