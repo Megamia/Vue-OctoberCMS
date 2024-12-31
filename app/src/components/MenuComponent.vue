@@ -27,6 +27,7 @@ import {
   AppstoreOutlined,
   SettingOutlined,
 } from "@ant-design/icons-vue";
+import router from "@/router";
 const theme = ref("dark");
 const selectedKeys = ref(["1"]);
 const openKeys = ref(["sub1"]);
@@ -128,5 +129,10 @@ const handleChangePage = (event) => {
   const selectedKey = event.key;
   const label = findLabelByKey(items.value, selectedKey);
   console.log(label);
+  const key = event.key;
+  if (key === "1") {
+    router.push("/TestPage");
+    console.log("1");
+  }
 };
 </script>

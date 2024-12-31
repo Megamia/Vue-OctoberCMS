@@ -5,8 +5,6 @@
 </template>
 
 <script>
-// import HelloWorld from "./components/HelloWorld.vue";
-// import AboutPage from "./components/AboutPage";
 </script>
 
 <style>
@@ -16,6 +14,5 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
