@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "@ant-design/icons-vue": "^7.0.1",
+    "@headlessui/vue": "^1.7.23",
+    "@heroicons/vue": "^2.2.0",
     "ant-design-vue": "^4.2.6",
     "axios": "^1.7.9",
     "core-js": "^3.8.3",
