@@ -101,12 +101,11 @@ const handleLogin = async () => {
         },
       }
     );
-    if (response.status === 200) {
-      console.log("Login successful:", response);
+    if (response.data.status === 1) {
       router.push("/TestPage");
       return;
     } else {
-      console.error("Login failed: ", response);
+      console.error("Login failed: ", response.message);
       return;
     }
   } catch (e) {
