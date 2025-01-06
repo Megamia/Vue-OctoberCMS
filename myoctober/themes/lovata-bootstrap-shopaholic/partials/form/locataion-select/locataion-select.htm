@@ -1,44 +1,89 @@
 {% if location_is_available %}
-    {% set countryId = form_value('country') %}
-    {% set stateId = form_value('state') %}
+{% set countryId = form_value('country') %}
+{% set stateId = form_value('state') %}
 
-    <div class="form-row">
-        <div class="form-group col-md-5">
-            <label for="inputCountry">Country</label>
-            {{ form_select_country('country_id', countryId, {
-                id: 'inputCountry',
-                class: 'form-control',
-                name: 'country',
-                emptyOption: '',
-                required: 'required',
-                'data-request': 'onInit',
-                'data-request-update': {
-                    'form/locataion-select/locataion-select': '._ajax_location_select_wrapper'
-                }
-            }) }}
-            <div class="invalid-feedback">
-                Please provide a valid country
-            </div>
-        </div>
-        <div class="form-group col-md-5">
-            <label for="inputState">State</label>
-            {{ form_select_state('state_id', countryId, stateId, {
-                id: 'inputState',
-                class: 'form-control',
-                name: 'state',
-                required: 'required',
-                emptyOption: ''
-            }) }}
-            <div class="invalid-feedback">
-                Please provide a valid city
-            </div>
-        </div>
-        <div class="form-group col-md-2">
-            <label for="inputZip">Zip</label>
-            <input type="text" class="form-control" id="inputZip" required>
-            <div class="invalid-feedback">
-                Please provide a valid zip
-            </div>
+<div>
+    <p>Country ID: {{ countryId }}</p>
+    {% if stateId is not null %}
+    <p id="stateIdDisplay">State ID: {{ stateId }}</p>
+    {% else %}
+    <p>Please select a state after choosing the country.</p>
+    {% endif %}
+    <p id="zipDisplay">Zip: </p>
+
+</div>
+
+<div class="form-row">
+    <div class="form-group col-md-5">
+        <label for="inputCountry">Country</label>
+        {{ form_select_country('country_id', countryId, {
+        id: 'inputCountry',
+        class: 'form-control',
+        name: 'country',
+        emptyOption: '',
+        required: 'required',
+        'data-request': 'onInit',
+        'data-request-update': {
+        'form/locataion-select/locataion-select': '._ajax_location_select_wrapper'
+        }
+        }) }}
+        <div class="invalid-feedback">
+            Please provide a valid country
         </div>
     </div>
+
+    <div class="form-group col-md-5">
+        <label for="inputState">State</label>
+        {{ form_select_state('state_id', countryId, stateId, {
+        id: 'inputState',
+        class: 'form-control',
+        name: 'state',
+        required: 'required',
+        emptyOption: 'Select a state'
+        }) }}
+        <div class="invalid-feedback">
+            Please provide a valid city
+        </div>
+    </div>
+
+    <div class="form-group col-md-2">
+        <label for="inputZip">Zip</label>
+        <input type="text" class="form-control" id="inputZip" name="postcode" required>
+        <div class="invalid-feedback">
+            Please provide a valid zip
+        </div>
+    </div>
+</div>
+<script>
+    document.getElementById('inputState').addEventListener('change', function () {
+        const stateId = this.value;
+        const stateDisplay = document.querySelector('p#stateIdDisplay');
+
+        if (stateId) {
+            stateDisplay.textContent = `State ID: ${stateId}`;
+        } else {
+            stateDisplay.textContent = "Please select a state after choosing the country.";
+        }
+    });
+    document.getElementById('inputZip').addEventListener('input', function () {
+        const zip = this.value;
+        const zipDisplay = document.querySelector('p#zipDisplay');
+
+        if (zip) {
+            zipDisplay.textContent = `Zip: ${zip}`;
+        } else {
+            zipDisplay.textContent = "Zip: ";
+        }
+    });
+    document.getElementById('inputCountry').addEventListener('change', function () {
+        console.log('Country selected:', this.value);
+    });
+
+    document.getElementById('inputState').addEventListener('change', function () {
+        console.log('State selected:', this.value);
+    });
+
+</script>
+
+
 {% endif %}
