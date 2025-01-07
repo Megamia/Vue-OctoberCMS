@@ -58,14 +58,12 @@ export default new (class CheckoutFormValidation {
             shipping_address: {
                 address1: form.find('input[name="address1"]').val(),
                 address2: form.find('input[name="address2"]').val(),
-                country: form.find('input[name="country"]').val(),
-                state: form.find('input[name="state"]').val(),
+                country: form.find('select[name="country"]').val(),
+                state: form.find('select[name="state"]').val(),
                 postcode: form.find('input[name="postcode"]').val(),
             },
             billing_address: {},
         };
-        console.log("Country:", data.shipping_address.country);
-        console.log("State:", data.shipping_address.state);
 
         this.clearNotAvailableCartPosition();
 
