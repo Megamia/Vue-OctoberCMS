@@ -12,7 +12,6 @@
         "lovata/buddies-plugin": "^1.10",
         "rainlab/pages-plugin": "^2.1",
         "lovata/shopaholic-plugin": "^1.32",
-        "reazzon/jwtauth-plugin": "^2.0",
         "offline/oc-cors-plugin": "^1.1",
         "rainlab/user-plugin": "^3.2",
         "rainlab/translate-plugin": "^2.2",
@@ -60,10 +59,6 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "repositories": [
-        {
-            "type": "composer",
-            "url": "https://repo.packagist.org"
-        },
         {
             "type": "composer",
             "url": "https://gateway.octobercms.com",

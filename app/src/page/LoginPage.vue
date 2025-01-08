@@ -90,7 +90,7 @@ const dataForm = ref({
 const handleLogin = async () => {
   try {
     const response = await axios.post(
-      "http://127.0.0.1:8000/api/login",
+      `${process.env.VUE_APP_URL}/api/login`,
       {
         email: dataForm.value.email,
         password: dataForm.value.password,
@@ -111,6 +111,9 @@ const handleLogin = async () => {
   } catch (e) {
     console.error("Error: ", e);
   }
+  // const apiUrl = process.env.VUE_APP_URL;
+  // console.log(apiUrl);
+  // console.log(import.meta.env.VITE_APP_URL_API);
 };
 
 const test = async () => {
